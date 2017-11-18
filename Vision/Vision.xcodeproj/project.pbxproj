@@ -13,6 +13,7 @@
 		287C6C911FC0C0EF00021727 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287C6C8F1FC0C0EF00021727 /* Main.storyboard */; };
 		287C6C931FC0C0EF00021727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 287C6C921FC0C0EF00021727 /* Assets.xcassets */; };
 		287C6C961FC0C0EF00021727 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287C6C941FC0C0EF00021727 /* LaunchScreen.storyboard */; };
+		CA03A7FB1FC0C8EA0065350B /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA03A7FA1FC0C8EA0065350B /* VirtualPlane.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		287C6C921FC0C0EF00021727 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		287C6C951FC0C0EF00021727 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		287C6C971FC0C0EF00021727 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA03A7FA1FC0C8EA0065350B /* VirtualPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VirtualPlane.swift; path = Vision/VirtualPlane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		287C6C7D1FC0C0EF00021727 = {
 			isa = PBXGroup;
 			children = (
+				CA03A7FA1FC0C8EA0065350B /* VirtualPlane.swift */,
 				287C6C881FC0C0EF00021727 /* Vision */,
 				287C6C871FC0C0EF00021727 /* Products */,
 			);
@@ -142,6 +145,7 @@
 			files = (
 				287C6C8E1FC0C0EF00021727 /* ViewController.swift in Sources */,
 				287C6C8A1FC0C0EF00021727 /* AppDelegate.swift in Sources */,
+				CA03A7FB1FC0C8EA0065350B /* VirtualPlane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,10 +283,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YYZ92V6LND;
+				DEVELOPMENT_TEAM = 7J57M62A98;
 				INFOPLIST_FILE = Vision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.muinmomin.Vision;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikechoi.Vision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -294,10 +298,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YYZ92V6LND;
+				DEVELOPMENT_TEAM = 7J57M62A98;
 				INFOPLIST_FILE = Vision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.muinmomin.Vision;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikechoi.Vision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

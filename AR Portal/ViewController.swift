@@ -13,8 +13,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var detectionStatusView: UIVisualEffectView!
     @IBOutlet weak var planeDetectionLabel: UILabel!
     @IBOutlet weak var sceneView: ARSCNView!
+    @IBOutlet weak var pipeInfoView: UIVisualEffectView!
+    @IBOutlet weak var pipeInfoLabel: UILabel!
+    @IBOutlet weak var infoButton: UIButton!
+    
+    var holePresent : Bool!
+    var curPipe : UUID!
     
     // MARK: - Constants
     
@@ -22,6 +29,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupView()
+        holePresent = false
+        
         // Here we tell the sceneView to detect horizontal surfaces
         configuration.planeDetection = .horizontal
         
@@ -45,7 +56,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.sceneView.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    func setupView() {
+        for view in [pipeInfoView, detectionStatusView] {
+            view!.layer.cornerRadius = 8
+            view!.clipsToBounds = true
+        }
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touchLocation = touches.first?.location(in: sceneView) else { return }
+        guard let touchedObject = sceneView.hitTest(touchLocation, options: nil).first else { return }
+        guard let objectName = touchedObject.node.name else { return }
+        
+        
+        if let pipeInfo = Pipe.pipeDict[objectName] {
+            pipeInfoLabel.text = pipeInfo.company
+            infoButton.isEnabled = true
+            if let selectedPipe = touchedObject.node.childNode(withName: objectName, recursively: true) {
+                selectedPipe.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+            }
+        }
+    }
+    
     @objc func sceneViewTapped(sender: UITapGestureRecognizer) {
+        if holePresent { return }
+        
         // We define the scene that the user tapped on.
         guard let sceneView = sender.view as? ARSCNView else { return }
         
@@ -63,6 +98,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             // user tapped on.
             addPortal(hitTestResult: hitTestResult.first!)
         }
+        
+        holePresent = true
     }
     
     func addPortal(hitTestResult: ARHitTestResult) {
@@ -88,7 +125,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // We call the addImageToPlane method to add images to the planes (walls)
         // of our portal.
-//        addImageToPlane(nodeName: "roof", node: portalNode, imageName: "side1")
         addImageToPlane(nodeName: "floor", node: portalNode, imageName: "soil")
         addImageToPlane(nodeName: "backWall", node: portalNode, imageName: "soil")
         addImageToPlane(nodeName: "rightSideWall", node: portalNode, imageName: "soil")
@@ -112,12 +148,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // We make sure that the anchor is a plane...
         guard anchor is ARPlaneAnchor else { return }
         
-        // Then we display our label from our viewcontroller and keep it on the screen for 3 seconds.
         DispatchQueue.main.async {
-            self.planeDetectionLabel.isHidden = false
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            self.planeDetectionLabel.isHidden = true
+            self.planeDetectionLabel.text = "Planes detected"
+            
+            UIView.animate(withDuration: 0.5, delay: 3.5, options: .curveEaseOut, animations: {
+                self.planeDetectionLabel.alpha = 0.0
+                self.detectionStatusView.alpha = 0.0
+            }, completion: nil)
         }
     }
     
@@ -157,10 +194,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func addColorToPlane(nodeName: String, node: SCNNode, color: UIColor) {
         let plane = node.childNode(withName: nodeName, recursively: true)
         plane?.geometry?.firstMaterial?.diffuse.contents = color.cgColor
-        plane?.renderingOrder = 50
-        if let mask = plane?.childNode(withName: "mask", recursively: false) {
-            mask.geometry?.firstMaterial?.transparency = 0.1
-        }
     }
 }
 

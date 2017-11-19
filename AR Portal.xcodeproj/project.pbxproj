@@ -14,6 +14,7 @@
 		9A672C051FAE87C4005358E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A672C041FAE87C4005358E6 /* Assets.xcassets */; };
 		9A672C081FAE87C4005358E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A672C061FAE87C4005358E6 /* LaunchScreen.storyboard */; };
 		9AE84F361FAFA1870007CC40 /* Portal.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AE84F351FAFA13E0007CC40 /* Portal.scnassets */; };
+		CA81C56D1FC13E01005AD17C /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81C56C1FC13E01005AD17C /* Pipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9A672C071FAE87C4005358E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A672C091FAE87C4005358E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AE84F351FAFA13E0007CC40 /* Portal.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Portal.scnassets; sourceTree = "<group>"; };
+		CA81C56C1FC13E01005AD17C /* Pipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pipe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				9A672BFD1FAE87C4005358E6 /* AppDelegate.swift */,
 				9A672BFF1FAE87C4005358E6 /* ViewController.swift */,
+				CA81C56C1FC13E01005AD17C /* Pipe.swift */,
 				9A672C011FAE87C4005358E6 /* Main.storyboard */,
 				9A672C041FAE87C4005358E6 /* Assets.xcassets */,
 				9A672C061FAE87C4005358E6 /* LaunchScreen.storyboard */,
@@ -146,6 +149,7 @@
 				9A672C001FAE87C4005358E6 /* ViewController.swift in Sources */,
 				9A672BFE1FAE87C4005358E6 /* AppDelegate.swift in Sources */,
 				28A51B3C1FC0F69700FB28CB /* Color.swift in Sources */,
+				CA81C56D1FC13E01005AD17C /* Pipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,10 +287,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YYZ92V6LND;
+				DEVELOPMENT_TEAM = 7J57M62A98;
 				INFOPLIST_FILE = "AR Portal/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.muinmomin.AR-Portal";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mikechoi.AR-Portal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -298,10 +302,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YYZ92V6LND;
+				DEVELOPMENT_TEAM = 7J57M62A98;
 				INFOPLIST_FILE = "AR Portal/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.muinmomin.AR-Portal";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mikechoi.AR-Portal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

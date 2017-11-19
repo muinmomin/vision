@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AR_Portal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUr-fz-fq9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </arscnView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdj-aO-eAs">
+                                <rect key="frame" x="16" y="594" width="343" height="64"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IZB-WW-9iR">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="64"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No pipe selected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVA-WH-nTw">
+                                            <rect key="frame" x="8" y="22" width="130" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwc-5v-63k">
+                                            <rect key="frame" x="304" y="21" width="22" height="22"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="vVA-WH-nTw" firstAttribute="leading" secondItem="IZB-WW-9iR" secondAttribute="leading" constant="8" id="5yX-ID-GUY"/>
+                                        <constraint firstAttribute="trailing" secondItem="dwc-5v-63k" secondAttribute="trailing" constant="17" id="AM4-1V-D0X"/>
+                                        <constraint firstItem="vVA-WH-nTw" firstAttribute="centerY" secondItem="IZB-WW-9iR" secondAttribute="centerY" id="J82-gi-jES"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vVA-WH-nTw" secondAttribute="trailing" constant="20" symbolic="YES" id="N8Z-E2-mmr"/>
+                                        <constraint firstItem="dwc-5v-63k" firstAttribute="centerY" secondItem="IZB-WW-9iR" secondAttribute="centerY" id="m1P-q5-BX1"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bdj-aO-eAs" secondAttribute="height" multiplier="343:64" id="6od-Hm-MDr"/>
+                                </constraints>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MZW-TX-iGv">
+                                <rect key="frame" x="16" y="20" width="343" height="43"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DG1-6y-5it">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching planes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jE0-2N-B31">
+                                            <rect key="frame" x="105.5" y="11" width="132" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="jE0-2N-B31" firstAttribute="centerY" secondItem="DG1-6y-5it" secondAttribute="centerY" id="4xy-y3-rd1"/>
+                                        <constraint firstItem="jE0-2N-B31" firstAttribute="centerX" secondItem="DG1-6y-5it" secondAttribute="centerX" id="8IL-mG-OhU"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="MZW-TX-iGv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6Mh-Td-u4s"/>
+                            <constraint firstItem="HUr-fz-fq9" firstAttribute="leading" secondItem="bdj-aO-eAs" secondAttribute="trailing" constant="-359" id="DsO-fD-wTQ"/>
+                            <constraint firstItem="HUr-fz-fq9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EDV-0B-qlY"/>
+                            <constraint firstAttribute="trailing" secondItem="HUr-fz-fq9" secondAttribute="trailing" id="HTZ-tc-37i"/>
+                            <constraint firstItem="HUr-fz-fq9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KzF-i5-FDd"/>
+                            <constraint firstItem="HUr-fz-fq9" firstAttribute="leading" secondItem="bdj-aO-eAs" secondAttribute="trailing" constant="-359" id="Nc6-PN-QkK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MZW-TX-iGv" secondAttribute="trailing" constant="16" id="RrR-79-1Zc"/>
+                            <constraint firstItem="MZW-TX-iGv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="evZ-CK-sUn"/>
+                            <constraint firstItem="bdj-aO-eAs" firstAttribute="top" secondItem="HUr-fz-fq9" secondAttribute="bottom" constant="-73" id="fUJ-LG-OoS"/>
+                            <constraint firstItem="HUr-fz-fq9" firstAttribute="top" secondItem="MZW-TX-iGv" secondAttribute="bottom" constant="-63" id="lgq-xy-Ikc"/>
+                            <constraint firstItem="HUr-fz-fq9" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mvc-A3-U1w"/>
+                            <constraint firstItem="bdj-aO-eAs" firstAttribute="centerX" secondItem="HUr-fz-fq9" secondAttribute="centerX" id="pdm-VG-R9U"/>
+                            <constraint firstItem="MZW-TX-iGv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ved-e9-MiH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="detectionStatusView" destination="MZW-TX-iGv" id="Put-ro-JAh"/>
+                        <outlet property="infoButton" destination="dwc-5v-63k" id="hHx-FB-EqE"/>
+                        <outlet property="pipeInfoLabel" destination="vVA-WH-nTw" id="wtx-d8-j7i"/>
+                        <outlet property="pipeInfoView" destination="bdj-aO-eAs" id="0id-fi-7Jn"/>
+                        <outlet property="planeDetectionLabel" destination="jE0-2N-B31" id="MHR-Cj-MeH"/>
+                        <outlet property="sceneView" destination="HUr-fz-fq9" id="pz2-xB-DOl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+</document>

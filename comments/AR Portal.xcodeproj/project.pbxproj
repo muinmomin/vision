@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28A51B3C1FC0F69700FB28CB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A51B3B1FC0F69700FB28CB /* Color.swift */; };
 		9A672BFE1FAE87C4005358E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A672BFD1FAE87C4005358E6 /* AppDelegate.swift */; };
 		9A672C001FAE87C4005358E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A672BFF1FAE87C4005358E6 /* ViewController.swift */; };
 		9A672C031FAE87C4005358E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A672C011FAE87C4005358E6 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28A51B3B1FC0F69700FB28CB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		9A672BFA1FAE87C4005358E6 /* AR Portal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR Portal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A672BFD1FAE87C4005358E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A672BFF1FAE87C4005358E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				9A672C061FAE87C4005358E6 /* LaunchScreen.storyboard */,
 				9AE84F351FAFA13E0007CC40 /* Portal.scnassets */,
 				9A672C091FAE87C4005358E6 /* Info.plist */,
+				28A51B3B1FC0F69700FB28CB /* Color.swift */,
 			);
 			path = "AR Portal";
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			files = (
 				9A672C001FAE87C4005358E6 /* ViewController.swift in Sources */,
 				9A672BFE1FAE87C4005358E6 /* AppDelegate.swift in Sources */,
+				28A51B3C1FC0F69700FB28CB /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

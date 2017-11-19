@@ -36,6 +36,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Here we conform to the ARSCNViewDelegate to use the `renderer` method below.
         sceneView.delegate = self
         
+        sceneView.autoenablesDefaultLighting = true
+        configuration.isLightEstimationEnabled = true
+        
         // Here we add a tap gesture recognizer so that when we tap on the screen we can add a portal
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sceneViewTapped))
         
@@ -85,13 +88,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // We call the addImageToPlane method to add images to the planes (walls)
         // of our portal.
-        addImageToPlane(nodeName: "roof", node: portalNode, imageName: "side1")
-        addImageToPlane(nodeName: "floor", node: portalNode, imageName: "side4")
-        addImageToPlane(nodeName: "backWall", node: portalNode, imageName: "side6")
-        addImageToPlane(nodeName: "rightSideWall", node: portalNode, imageName: "side2")
-        addImageToPlane(nodeName: "leftSideWall", node: portalNode, imageName: "side5")
-        addImageToPlane(nodeName: "rightFrontDoorWall", node: portalNode, imageName: "side3")
-        addImageToPlane(nodeName: "leftFrontDoorWall", node: portalNode, imageName: "side3")
+//        addImageToPlane(nodeName: "roof", node: portalNode, imageName: "side1")
+        addImageToPlane(nodeName: "floor", node: portalNode, imageName: "soil")
+        addImageToPlane(nodeName: "backWall", node: portalNode, imageName: "soil")
+        addImageToPlane(nodeName: "rightSideWall", node: portalNode, imageName: "soil")
+        addImageToPlane(nodeName: "leftSideWall", node: portalNode, imageName: "soil")
+        addImageToPlane(nodeName: "rightFrontDoorWall", node: portalNode, imageName: "soil")
+        addImageToPlane(nodeName: "leftFrontDoorWall", node: portalNode, imageName: "soil")
+        
+        addColorToPlane(nodeName: "pipe1", node: portalNode, color: UIColor(rgb: 0xc0392b))
+        addColorToPlane(nodeName: "pipe2", node: portalNode, color: UIColor(rgb: 0x2980b9))
+        
+        let whiteOpaque = UIColor.white.withAlphaComponent(0.25)
+        addColorToPlane(nodeName: "top", node: portalNode, color: whiteOpaque)
     }
     
     // The renderer method adds what are called 'anchors' within our scene. Anchors encode
@@ -141,6 +150,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             // Here's an analogy. If you use Photoshop (or any image editing software for that matter)
             // And apply a mask to a layer with 0.0 opacity, was it really worth placing a mask on your layer if it's
             // basically non-existant?
+            mask.geometry?.firstMaterial?.transparency = 0.1
+        }
+    }
+    
+    func addColorToPlane(nodeName: String, node: SCNNode, color: UIColor) {
+        let plane = node.childNode(withName: nodeName, recursively: true)
+        plane?.geometry?.firstMaterial?.diffuse.contents = color.cgColor
+        plane?.renderingOrder = 50
+        if let mask = plane?.childNode(withName: "mask", recursively: false) {
             mask.geometry?.firstMaterial?.transparency = 0.1
         }
     }

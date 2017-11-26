@@ -9,7 +9,7 @@
 import UIKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentationControllerDelegate {
     
     // MARK: - IBOutlets
     
@@ -22,6 +22,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     var holePresent : Bool!
     var curPipe : UUID!
+    var cnt : Int!
+    var names = ["pipe2"]
     
     // MARK: - Constants
     
@@ -29,6 +31,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cnt = 0
         
         setupView()
         holePresent = false
@@ -42,7 +45,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // When debugging our app we would like the see what features our device has noticed in its
         // environment so we use the 'showFeaturePoints' debug option. The showWorldOrigin option
         // shows the origin of our sceneView.
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         
         // Here we conform to the ARSCNViewDelegate to use the `renderer` method below.
         sceneView.delegate = self
@@ -56,30 +59,36 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.sceneView.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "info" {
+            let dest = segue.destination
+            if let pop = dest.popoverPresentationController {
+                pop.delegate = self
+            }
+        }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
     func setupView() {
         for view in [pipeInfoView, detectionStatusView] {
             view!.layer.cornerRadius = 8
             view!.clipsToBounds = true
         }
     }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touchLocation = touches.first?.location(in: sceneView) else { return }
-        guard let touchedObject = sceneView.hitTest(touchLocation, options: nil).first else { return }
-        guard let objectName = touchedObject.node.name else { return }
-        
-        
-        if let pipeInfo = Pipe.pipeDict[objectName] {
-            pipeInfoLabel.text = pipeInfo.company
-            infoButton.isEnabled = true
-            if let selectedPipe = touchedObject.node.childNode(withName: objectName, recursively: true) {
-                selectedPipe.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-            }
-        }
-    }
     
     @objc func sceneViewTapped(sender: UITapGestureRecognizer) {
-        if holePresent { return }
+        cnt = cnt + 1
+        
+        if holePresent {
+            let pipeName = names[cnt % 2]
+            let fakePipe = Pipe.pipeDict[pipeName]!
+            pipeInfoLabel.text = fakePipe.company
+            infoButton.isEnabled = true
+            return
+        }
         
         // We define the scene that the user tapped on.
         guard let sceneView = sender.view as? ARSCNView else { return }
@@ -132,8 +141,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         addImageToPlane(nodeName: "rightFrontDoorWall", node: portalNode, imageName: "soil")
         addImageToPlane(nodeName: "leftFrontDoorWall", node: portalNode, imageName: "soil")
         
-        addColorToPlane(nodeName: "pipe1", node: portalNode, color: UIColor(rgb: 0xc0392b))
-        addColorToPlane(nodeName: "pipe2", node: portalNode, color: UIColor(rgb: 0x2980b9))
+        addColorToPlane(nodeName: "pipe2", node: portalNode, color: UIColor.red)
         
         let whiteOpaque = UIColor.white.withAlphaComponent(0.25)
         addColorToPlane(nodeName: "top", node: portalNode, color: whiteOpaque)
@@ -193,6 +201,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func addColorToPlane(nodeName: String, node: SCNNode, color: UIColor) {
         let plane = node.childNode(withName: nodeName, recursively: true)
+        plane?.renderingOrder = 50
         plane?.geometry?.firstMaterial?.diffuse.contents = color.cgColor
     }
 }
